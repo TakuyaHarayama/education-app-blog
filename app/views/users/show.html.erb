@@ -5,10 +5,18 @@
   <%= @user.name %>
 </p>
 
-<%= link_to 'New Post', new_user_post_path(@user) %>
-
-<br>
-<br>
-
 <%= link_to 'Edit', edit_user_path(@user) %> |
 <%= link_to 'Back', users_path %>
+
+<hr>
+
+<p>
+  <strong><%= @user.name %>'s posts:</strong>
+  <ul>
+    <% @user.posts.each do |post| %>
+      <li><%= post.title %></li>
+    <% end %>
+  </ul>
+</p>
+
+<%= link_to 'New Post', new_user_post_path(@user) %>
