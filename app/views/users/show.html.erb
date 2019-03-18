@@ -12,11 +12,15 @@
 
 <p>
   <strong><%= @user.name %>'s posts:</strong>
-  <ul>
-    <% @user.posts.each do |post| %>
-      <li><%= post.title %></li>
-    <% end %>
-  </ul>
+  <% if @user.posts.present? %>
+    <ul>
+      <% @user.posts.each do |post| %>
+        <li><%= link_to post.title, user_post_path(@user, post) %></li>
+      <% end %>
+    </ul>
+  <% else %>
+    <p>No posts!</p>
+  <% end %>
 </p>
 
 <%= link_to 'New Post', new_user_post_path(@user) %>
